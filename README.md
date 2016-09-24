@@ -151,6 +151,10 @@ simple querySelectorAll method) to the plugin method.
 
 
 
+Where are the plugins?
+-------------------------
+
+- https://github.com/lingtalfi/z-ripple
 
 
 
