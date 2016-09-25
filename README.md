@@ -91,10 +91,10 @@ Note2: by default, the zquery.js file contains all the functions (lazy version).
 Core (core.js file)
 -------
 
-### z ( selector )
+### z ( selector, ?context )
 
 ```
-Array z (str:selector)
+Array z (str:selector, ?domEl:context)
 ```
 z performs a document.querySelectorAll request, and returns an Array containing the dom elements that matched.
  
@@ -103,6 +103,17 @@ Example
 ```js
 // select all elements with css class "item" and set their background color to red
 z('.item').forEach(function (el) {
+    el.style.background = "red";
+});
+``` 
+
+You can provide the context as the second argument, which defaults to document otherwise.
+
+Example
+```js
+// select all ".item" elements inside "#myContainer" and set their background color to red
+var container = document.getElementById("myContainer");
+z('.item', container).forEach(function (el) {
     el.style.background = "red";
 });
 ``` 
@@ -151,6 +162,16 @@ simple querySelectorAll method) to the plugin method.
 
 
 
+### Use a context
+To make your selection faster, you can provide a context argument to the zz method, like so:
+
+```js
+var container = document.getElementById("myContainer");
+zz(".item", container).highlight();  // search for .item elements inside container
+```
+
+
+
 Where are the plugins?
 -------------------------
 
@@ -170,6 +191,10 @@ The goal of zquery is to factorize the most common methods used by a developer i
 
 History Log
 ------------------
+    
+- 1.1.0 -- 2016-09-25
+
+    - add context for z and zz methods
     
 - 1.0.0 -- 2016-09-20
 

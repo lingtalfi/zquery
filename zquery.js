@@ -25,9 +25,10 @@ if (!window.z) {
     // This method is only useful if you intend to loop over a collection of elements.
     // If you target a single element, you should use methods like document.getElementById 
     // or document.querySelector. 
-    window.z = function (selector) {
-        return Array.prototype.slice.call(document.querySelectorAll(selector));
-    }; 
+    window.z = function (selector, context) {
+        context = context || document;
+        return Array.prototype.slice.call(context.querySelectorAll(selector));
+    };
     //------------------------------------------------------------------------------/
     // STYLES
     //------------------------------------------------------------------------------/
@@ -46,16 +47,17 @@ if (!window.z) {
     //------------------------------------------------------------------------------/
     // this method returns a ZquerySet object, which might only be convenient if chained to a plugin method.
     // See the ZquerySet object below for more information
-    window.zz = function (selector) {
-        return new ZquerySet(Array.prototype.slice.call(document.querySelectorAll(selector)));
+    window.zz = function (selector, context) {
+        context = context || document;
+        return new ZquerySet(Array.prototype.slice.call(context.querySelectorAll(selector)));
     };
     /**
      * The Zquery set allows us to apply methods on a collection of dom element (a simple js array actually).
      * It was created so that plugins could use it.
-     * For instance, a plugin named ripple could extend the prototype and provide a method ripple that we could 
+     * For instance, a plugin named ripple could extend the prototype and provide a method ripple that we could
      * use like this:
      *          zz(".ripple").ripple();
-     * 
+     *
      */
     window.ZquerySet = function (els) {
         this.els = els;
@@ -64,7 +66,8 @@ if (!window.z) {
         each: function (callback) {
             this.els.forEach(callback);
         }
-    }
+    };
+
 }
 
 
