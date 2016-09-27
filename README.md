@@ -119,7 +119,30 @@ z('.item', container).forEach(function (el) {
 ``` 
 
 
-Offset (styles/offset.js file)
+Events
+----------
+
+### z.debounce ( func, wait )
+
+```
+function z.debounce (function:func, number:wait)
+```
+Returns a function that when called, will be executed after a delay of n=wait milliseconds.
+If the function is called again before the delay has expired, then a new delay is created and
+the previous call will be cancelled.
+In other words, the returned function will not be triggered more than once every n=wait milliseconds.
+
+ 
+Example
+```js
+// this function will not execute more than once every 400ms.
+ window.addEventListener('resize', z.debounce(function(e){
+        console.log("e");
+    }, 400));
+``` 
+
+
+Styles
 ----------
 
 ### z.offset ( el )
@@ -192,6 +215,10 @@ The goal of zquery is to factorize the most common methods used by a developer i
 History Log
 ------------------
     
+- 1.2.0 -- 2016-09-27
+
+    - add z.debounce method
+
 - 1.1.0 -- 2016-09-25
 
     - add context for z and zz methods
