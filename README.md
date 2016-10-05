@@ -219,6 +219,34 @@ console.log(info.top, info.left, info);
 
 
 
+Traversing
+----------
+
+### domElement.closest ( selector )
+
+```
+null|domElement domElement.closest (string:selector)
+```
+
+Returns the first element to match the given selector, starting at the domElement object and traversing 
+the parents until there is no more parent, in which case null is returned.
+
+This method is actually a polyfill for Internet Explorer, since other modern browsers have a native closest method.
+
+ 
+ 
+Example
+```js
+document.querySelector(".container").addEventListener("click", function (e) {
+    var item = e.target.closest(".item");
+    if(null !== item){
+        console.log("aha");
+    }
+});  
+``` 
+
+
+
 
 How to use the plugins
 ---------------
@@ -270,6 +298,11 @@ The goal of zquery is to factorize the most common methods used by a developer i
 
 History Log
 ------------------
+    
+- 1.4.0 -- 2016-10-05
+
+    - add z.closest method
+    - fix z.dispatchify for modern cross browsers compatibility
     
 - 1.3.0 -- 2016-10-05
 
