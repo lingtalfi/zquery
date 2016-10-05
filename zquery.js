@@ -43,6 +43,54 @@ if (!window.z) {
     };
 
     //------------------------------------------------------------------------------/
+    // EVENTS
+    //------------------------------------------------------------------------------/
+    window.z.debounce = function (func, wait) {
+        var id = null;
+        return function () {
+            if (null !== id) {
+                clearTimeout(id);
+            }
+            id = setTimeout(func, wait);
+        };
+    };
+
+
+    window.z.dispatchify = function (obj, Object) {
+        // https://github.com/lingtalfi/jsdispatchers/blob/master/simple_dispatcher.js
+        if ('undefined' === typeof obj.listeners) {
+            obj.listeners = {};
+            obj.listenerIndex = 0;
+        }
+
+        if ('undefined' === typeof Object.prototype.on) {
+            Object.prototype.on = function (eventName, fn) {
+                if (false === (eventName in this.listeners)) {
+                    this.listeners[eventName] = {};
+                }
+                this.listeners[eventName][this.listenerIndex++] = fn;
+                return this;
+            };
+            Object.prototype.off = function (eventName, fn) {
+                for (var i in this.listeners) {
+                    for (var j in this.listeners[i]) {
+                        if (this.listeners[i][j] === fn) {
+                            delete this.listeners[i][j];
+                        }
+                    }
+                }
+            };
+            Object.prototype.trigger = function (eventName, ...args) {
+                if (eventName in this.listeners) {
+                    for (var i in this.listeners[eventName]) {
+                        this.listeners[eventName][i].call(this, ...args);
+                    }
+                }
+            };
+        }
+    };
+
+    //------------------------------------------------------------------------------/
     // PLUGINS CORE
     //------------------------------------------------------------------------------/
     // this method returns a ZquerySet object, which might only be convenient if chained to a plugin method.

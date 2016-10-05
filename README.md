@@ -142,6 +142,62 @@ Example
 ``` 
 
 
+### z.dispatchify ( obj, Object )
+
+```
+void z.dispatchify (instance:obj, Class:Object)
+```
+
+Take the object which instance and class are passed, and add two properties to the instance, and three to the
+Object's prototype, effectively turning the object into a simple dispatcher.
+
+The two properties (you shouldn't worry about them, just ensure that they don't already exist in your object):
+
+- listeners
+- listenerIndex
+
+The three methods are:
+
+- on (eventName, fn)
+- off (eventName, fn)
+- trigger (eventName, ...args)
+
+
+Note: if the properties or the methods already exist, then won't be added a second time.
+
+More info about the dispatcher here: https://github.com/lingtalfi/jsdispatchers#simple-dispatcher
+ 
+ 
+
+ 
+Example
+```js
+	var Car = function () {
+		this.color = "red";
+		z.dispatchify(this, Car);
+	};
+
+	Car.prototype = {
+		getColor: function () {
+			this.trigger("getColorBefore", this);
+			return this.color;
+		}
+	};
+
+	
+	
+	var austin = new Car();
+	
+	austin.on("getColorBefore", function (zis) {
+		zis.color = 'blue';
+		console.log("getColorBefore");
+	});
+
+
+	console.log(austin.getColor()); // getColorBefore  blue
+``` 
+
+
 Styles
 ----------
 
@@ -214,6 +270,10 @@ The goal of zquery is to factorize the most common methods used by a developer i
 
 History Log
 ------------------
+    
+- 1.3.0 -- 2016-10-05
+
+    - add z.dispatchify method
     
 - 1.2.0 -- 2016-09-27
 
