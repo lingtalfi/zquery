@@ -319,6 +319,10 @@ The goal of zquery is to factorize the most common methods used by a developer i
 History Log
 ------------------
     
+- 1.5.1 -- 2016-10-06
+
+    - keyboardEventKey polyfill now returns "Unidentified" when the key is unknown
+    
 - 1.5.0 -- 2016-10-06
 
     - add keyboardEventKey polyfill

@@ -70,7 +70,7 @@ if ('KeyboardEvent' in window && false === ('key' in KeyboardEvent.prototype)) {
 
     var proto = {
         get: function (x) {
-            var key = keys[this.which || this.keyCode];
+            var key = keys[this.which || this.keyCode] || "Unidentified";
             if (Array.isArray(key)) {
                 key = key[+this.shiftKey];
             }

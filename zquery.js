@@ -123,7 +123,7 @@ if (!window.z) {
 
         var proto = {
             get: function (x) {
-                var key = keys[this.which || this.keyCode];
+                var key = keys[this.which || this.keyCode] || "Unidentified";
                 if (Array.isArray(key)) {
                     key = key[+this.shiftKey];
                 }
