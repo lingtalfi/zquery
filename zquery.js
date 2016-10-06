@@ -94,6 +94,45 @@ if (!window.z) {
     };
 
 
+    // KEYBOARD EVENT KEY POLYFILL 
+    if ('KeyboardEvent' in window && false === ('key' in KeyboardEvent.prototype)) {
+
+        var keys = {
+            8: 'Backspace',
+            9: 'Tab',
+            13: 'Enter',
+            27: 'Escape',
+            32: ' ',
+            33: 'PageUp',
+            34: 'PageDown',
+            35: 'End',
+            36: 'Home',
+            37: 'ArrowLeft',
+            38: 'ArrowUp',
+            39: 'ArrowRight',
+            40: 'ArrowDown'
+        };
+
+        // Printable ASCII characters.
+        var letter = '';
+        var i;
+        for (i = 65; i < 91; i++) {
+            letter = String.fromCharCode(i);
+            keys[i] = [letter.toLowerCase(), letter.toUpperCase()];
+        }
+
+        var proto = {
+            get: function (x) {
+                var key = keys[this.which || this.keyCode];
+                if (Array.isArray(key)) {
+                    key = key[+this.shiftKey];
+                }
+                return key;
+            }
+        };
+        Object.defineProperty(KeyboardEvent.prototype, 'key', proto);
+    }
+
     //------------------------------------------------------------------------------/
     // TRAVERSING
     //------------------------------------------------------------------------------/    
@@ -123,7 +162,7 @@ if (!window.z) {
                 }
         }(Element.prototype);
     })();
-    
+
     //------------------------------------------------------------------------------/
     // PLUGINS CORE
     //------------------------------------------------------------------------------/

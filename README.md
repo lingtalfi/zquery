@@ -198,6 +198,26 @@ Example
 ``` 
 
 
+
+### KeyboardEvent.key polyfill
+
+This is a simple and not complete KeyboardEvent.key polyfill for browsers that don't have a native 
+implementation yet (safari9 as the time of writing, but they are currently working on it...).
+
+Basically, it emulates letters (lower case or upper case), NOT numbers, and a few special chars like Tab, ArrowLeft,
+Enter,...
+
+More details in the source code's comments.
+ 
+ 
+Example
+```js
+document.body.addEventListener('keydown', function (e) {
+    console.log(e.key);
+});
+``` 
+
+
 Styles
 ----------
 
@@ -298,6 +318,11 @@ The goal of zquery is to factorize the most common methods used by a developer i
 
 History Log
 ------------------
+    
+- 1.5.0 -- 2016-10-06
+
+    - add keyboardEventKey polyfill
+    - rename closest.js to closest-polyfill.js
     
 - 1.4.0 -- 2016-10-05
 
