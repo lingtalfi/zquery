@@ -84,7 +84,7 @@ if (!window.z) {
             };
             Object.prototype.trigger = function (eventName) {
                 if (eventName in this.listeners) {
-                    var args = [].slice.call(arguments);
+                    var args = [].slice.call(arguments, 1);
                     for (var i in this.listeners[eventName]) {
                         this.listeners[eventName][i].apply(this, args);
                     }

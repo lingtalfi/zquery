@@ -188,7 +188,7 @@ Example
 	
 	var austin = new Car();
 	
-	austin.on("getColorBefore", function (eventName, zis) {
+	austin.on("getColorBefore", function (zis) {
 		zis.color = 'blue';
 		console.log("getColorBefore");
 	});
@@ -318,6 +318,11 @@ The goal of zquery is to factorize the most common methods used by a developer i
 
 History Log
 ------------------
+    
+- 1.5.3 -- 2016-10-06
+
+    - fix bug and bad code example in dispatchify and demo
+     
     
 - 1.5.2 -- 2016-10-06
 

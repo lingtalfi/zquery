@@ -22,10 +22,11 @@ window.z.dispatchify = function (obj, Object) {
                 }
             }
         };
-        Object.prototype.trigger = function (eventName, ...args) {
+        Object.prototype.trigger = function (eventName) {
             if (eventName in this.listeners) {
+                var args = [].slice.call(arguments, 1);
                 for (var i in this.listeners[eventName]) {
-                    this.listeners[eventName][i].call(this, ...args);
+                    this.listeners[eventName][i].apply(this, args);
                 }
             }
         };
