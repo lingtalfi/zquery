@@ -163,6 +163,38 @@ if (!window.z) {
         }(Element.prototype);
     })();
 
+
+    //------------------------------------------------------------------------------/
+    // UTILITIES
+    //------------------------------------------------------------------------------/
+    window.z.clone = function (mixed) {
+        if (Array.isArray(mixed)) {
+            var out = [];
+            var len = mixed.length;
+            for (var i = 0; i < len; i++) {
+                out[i] = z.clone(mixed[i]);
+            }
+            return out;
+        }
+        else if (z.isPlainObject(mixed)) {
+            var out = {};
+            for (var i in mixed) {
+                out[i] = z.clone(mixed[i]);
+            }
+            return out;
+        }
+        return mixed;
+    };
+    
+    window.z.isFunction = function(mixed){
+        return ("function" === typeof mixed);
+    };
+    
+    window.z.isPlainObject = function(mixed){
+        // http://perfectionkills.com/instanceof-considered-harmful-or-how-to-write-a-robust-isarray/
+        return ('[object Object]' === Object.prototype.toString.call(mixed));
+    };
+
     //------------------------------------------------------------------------------/
     // PLUGINS CORE
     //------------------------------------------------------------------------------/

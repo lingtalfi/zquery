@@ -94,7 +94,7 @@ Core (core.js file)
 ### z ( selector, ?context )
 
 ```
-Array z (str:selector, ?domEl:context)
+Array z ( str:selector, ?domEl:context )
 ```
 z performs a document.querySelectorAll request, and returns an Array containing the dom elements that matched.
  
@@ -125,7 +125,7 @@ Events
 ### z.debounce ( func, wait )
 
 ```
-function z.debounce (function:func, number:wait)
+function z.debounce ( function:func, number:wait )
 ```
 Returns a function that when called, will be executed after a delay of n=wait milliseconds.
 If the function is called again before the delay has expired, then a new delay is created and
@@ -145,7 +145,7 @@ Example
 ### z.dispatchify ( obj, Object )
 
 ```
-void z.dispatchify (instance:obj, Class:Object)
+void z.dispatchify ( instance:obj, Class:Object )
 ```
 
 Take the object which instance and class are passed, and add two properties to the instance, and three to the
@@ -224,7 +224,7 @@ Styles
 ### z.offset ( el )
 
 ```
-Object z.offset (domElement:el)
+Object z.offset ( domElement:el )
 ```
 Returns an object containing the top and left properties, two numbers which represent the position of the given element
 relative to the document.
@@ -245,7 +245,7 @@ Traversing
 ### domElement.closest ( selector )
 
 ```
-null|domElement domElement.closest (string:selector)
+null|domElement domElement.closest ( string:selector )
 ```
 
 Returns the first element to match the given selector, starting at the domElement object and traversing 
@@ -264,6 +264,86 @@ document.querySelector(".container").addEventListener("click", function (e) {
     }
 });  
 ``` 
+
+
+Utility
+------------
+
+
+### z.clone ( mixed )
+
+```
+mixed z.clone ( mixed:mixed )
+```
+
+Return a clone of the given argument.
+If the argument is an array or an object, a deep copy is performed (recursively). 
+ 
+ 
+Example
+```js
+var car = {
+    color: "red",
+};
+var options = {
+    car: car,
+    wheels: 4,
+};
+var myOptions = z.clone(options);
+myOptions.car.color = "blue";
+console.log(options.car.color); // red
+console.log(myOptions.car.color); // blue
+``` 
+
+
+Depends on z.isFunction and z.isPlainObject.
+
+
+
+
+### z.isFunction ( mixed )
+
+```
+bool z.isFunction ( mixed:mixed )
+```
+
+Return whether or not the given argument is a function.
+ 
+ 
+Example
+```js
+var p = function(){
+    
+};
+var q = {};
+console.log(z.isFunction(p)); // true
+console.log(z.isFunction(q)); // false
+``` 
+
+
+
+### z.isPlainObject ( mixed )
+
+```
+bool z.isPlainObject ( mixed:mixed )
+```
+
+Return whether or not the given argument is a plain js object.
+ 
+ 
+Example
+```js
+var p = function(){
+		
+};
+var q = {};
+var r = [];
+console.log(z.isPlainObject(p)); // false
+console.log(z.isPlainObject(q)); // true
+console.log(z.isPlainObject(r)); // false
+``` 
+
+
 
 
 
@@ -319,6 +399,10 @@ The goal of zquery is to factorize the most common methods used by a developer i
 History Log
 ------------------
     
+- 1.6.0 -- 2016-10-07
+
+    - add isFunction, isPlainObject and clone methods
+     
 - 1.5.3 -- 2016-10-06
 
     - fix bug and bad code example in dispatchify and demo
