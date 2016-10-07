@@ -167,23 +167,20 @@ if (!window.z) {
     //------------------------------------------------------------------------------/
     // UTILITIES
     //------------------------------------------------------------------------------/
-    window.z.clone = function (mixed) {
-        if (Array.isArray(mixed)) {
-            var out = [];
-            var len = mixed.length;
-            for (var i = 0; i < len; i++) {
-                out[i] = z.clone(mixed[i]);
-            }
-            return out;
+    /**
+     * Note: this method works for the most basic cases, but might have issues if you are trying
+     * to clone a Date object.
+     * http://stackoverflow.com/questions/728360/how-do-i-correctly-clone-a-javascript-object 
+     */
+    window.z.clone = function(obj) {
+        if (obj == null || typeof(obj) != 'object') {
+            return obj;
         }
-        else if (z.isPlainObject(mixed)) {
-            var out = {};
-            for (var i in mixed) {
-                out[i] = z.clone(mixed[i]);
-            }
-            return out;
+        var temp = new obj.constructor();
+        for (var key in obj) {
+            temp[key] = z.clone(obj[key]);
         }
-        return mixed;
+        return temp;
     };
     
     window.z.isFunction = function(mixed){

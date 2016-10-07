@@ -270,7 +270,7 @@ Utility
 ------------
 
 
-### z.clone ( mixed )
+### z.clone ( obj )
 
 ```
 mixed z.clone ( mixed:mixed )
@@ -278,6 +278,7 @@ mixed z.clone ( mixed:mixed )
 
 Return a clone of the given argument.
 If the argument is an array or an object, a deep copy is performed (recursively). 
+
  
  
 Example
@@ -295,8 +296,6 @@ console.log(options.car.color); // red
 console.log(myOptions.car.color); // blue
 ``` 
 
-
-Depends on z.isFunction and z.isPlainObject.
 
 
 
@@ -398,6 +397,10 @@ The goal of zquery is to factorize the most common methods used by a developer i
 
 History Log
 ------------------
+    
+- 1.6.1 -- 2016-10-07
+
+    - reforge clone method, removed isFunction and isPlainObject dependencies
     
 - 1.6.0 -- 2016-10-07
 
