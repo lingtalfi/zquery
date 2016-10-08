@@ -238,6 +238,44 @@ console.log(info.top, info.left, info);
 ``` 
 
 
+### z.position ( el )
+
+```
+Object z.position ( domElement:el )
+```
+Returns an object containing the top and left properties, two numbers which represent the position of the given element
+relative to the closest positioned ancestor.
+ 
+ 
+Example
+```js
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Sam button demo</title>
+	<script src="zquery/zquery.js"></script>
+
+	<style>
+		body {
+			margin: 16px;
+		}
+
+	</style>
+</head>
+<body>
+
+<button id="btn">Hi</button>
+<script>
+	console.log(z.position(document.getElementById('btn'))); // { left: 16, top: 17 }
+</script>
+
+</body>
+</html>  
+``` 
+
+
 
 Traversing
 ----------
@@ -397,6 +435,10 @@ The goal of zquery is to factorize the most common methods used by a developer i
 
 History Log
 ------------------
+    
+- 1.7.0 -- 2016-10-08
+
+    - add position method
     
 - 1.6.1 -- 2016-10-07
 
