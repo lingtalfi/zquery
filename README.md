@@ -323,6 +323,36 @@ Example
 ``` 
 
 
+### z.viewportHeight ( )
+
+```
+number z.viewportHeight ( )
+```
+
+Returns the viewport height (independent of scrolling, and without the scrolling bars).
+ 
+ 
+Example
+```js
+console.log(z.viewportHeight()); // 844
+``` 
+
+
+### z.viewportWidth ( )
+
+```
+number z.viewportWidth ( )
+```
+
+Returns the viewport width (independent of scrolling, and without the scrolling bars).
+ 
+ 
+Example
+```js
+console.log(z.viewportWidth()); // 946
+``` 
+
+
 
 Traversing
 ----------
@@ -482,6 +512,10 @@ The goal of zquery is to factorize the most common methods used by a developer i
 
 History Log
 ------------------
+    
+- 1.9.0 -- 2016-10-08
+
+    - add viewportWidth and viewportHeight methods
     
 - 1.8.0 -- 2016-10-08
 

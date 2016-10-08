@@ -155,6 +155,14 @@ if (!window.z) {
         return {top: el.offsetTop, left: el.offsetLeft}
     };
 
+    window.z.viewportWidth = function () {
+        return document.documentElement.clientWidth;
+        // return Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    };
+    window.z.viewportHeight = function () {
+        return document.documentElement.clientHeight;
+        // return Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    };
 
     //------------------------------------------------------------------------------/
     // TRAVERSING
