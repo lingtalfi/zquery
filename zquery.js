@@ -34,6 +34,22 @@ if (!window.z) {
 
 
     //------------------------------------------------------------------------------/
+    // ATTRIBUTES
+    //------------------------------------------------------------------------------/
+    (function () {
+        var cpt = 0;
+        window.z.id = function (el) {
+            var id = el.getAttribute('id');
+            if (id) {
+                return id;
+            }
+            id = "z-uid-" + cpt++;
+            el.setAttribute('id', id);
+            return id;
+        };
+    })();
+
+    //------------------------------------------------------------------------------/
     // EVENTS
     //------------------------------------------------------------------------------/
     window.z.debounce = function (func, wait) {
@@ -121,7 +137,7 @@ if (!window.z) {
         };
         Object.defineProperty(KeyboardEvent.prototype, 'key', proto);
     }
-    
+
     //------------------------------------------------------------------------------/
     // STYLES
     //------------------------------------------------------------------------------/
@@ -138,8 +154,8 @@ if (!window.z) {
     window.z.position = function (el) {
         return {top: el.offsetTop, left: el.offsetLeft}
     };
-    
-    
+
+
     //------------------------------------------------------------------------------/
     // TRAVERSING
     //------------------------------------------------------------------------------/    
@@ -177,9 +193,9 @@ if (!window.z) {
     /**
      * Note: this method works for the most basic cases, but might have issues if you are trying
      * to clone a Date object.
-     * http://stackoverflow.com/questions/728360/how-do-i-correctly-clone-a-javascript-object 
+     * http://stackoverflow.com/questions/728360/how-do-i-correctly-clone-a-javascript-object
      */
-    window.z.clone = function(obj) {
+    window.z.clone = function (obj) {
         if (obj == null || typeof(obj) != 'object') {
             return obj;
         }
@@ -189,12 +205,12 @@ if (!window.z) {
         }
         return temp;
     };
-    
-    window.z.isFunction = function(mixed){
+
+    window.z.isFunction = function (mixed) {
         return ("function" === typeof mixed);
     };
-    
-    window.z.isPlainObject = function(mixed){
+
+    window.z.isPlainObject = function (mixed) {
         // http://perfectionkills.com/instanceof-considered-harmful-or-how-to-write-a-robust-isarray/
         return ('[object Object]' === Object.prototype.toString.call(mixed));
     };

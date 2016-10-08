@@ -119,6 +119,53 @@ z('.item', container).forEach(function (el) {
 ``` 
 
 
+Attributes
+----------
+
+### z.id ( el )
+
+```
+string z.id ( domElement:el )
+```
+Returns the css id of the given element.
+One (unique identifier) is created if necessary.
+
+ 
+Example
+```js
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>zquery id demo</title>
+	<script src="zquery/zquery.js"></script>
+</head>
+<body>
+
+<button id="btn" class="btn1">Hi</button>
+<button class="btn2">Hi</button>
+<button class="btn3">Hi</button>
+<script>
+	
+	var btn1 = document.querySelector('.btn1');
+	var btn2 = document.querySelector('.btn2');
+	var btn3 = document.querySelector('.btn3');
+	
+	console.log(z.id(btn1)); // btn
+	console.log(z.id(btn1)); // btn
+	console.log(z.id(btn2)); // z-uid-0
+	console.log(z.id(btn2)); // z-uid-0
+	console.log(z.id(btn3)); // z-uid-1
+	console.log(z.id(btn3)); // z-uid-1
+</script>
+
+</body>
+</html>
+``` 
+
+
+
 Events
 ----------
 
@@ -435,6 +482,10 @@ The goal of zquery is to factorize the most common methods used by a developer i
 
 History Log
 ------------------
+    
+- 1.8.0 -- 2016-10-08
+
+    - add id method
     
 - 1.7.0 -- 2016-10-08
 
