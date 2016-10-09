@@ -8,7 +8,7 @@ A customized javascript library for your projects.
 
 Features
 -------------
-- composable library (it only includes what you need), which means it can be ridiculously small 
+- composable library (it only includes what you need), which means it can be ridiculously small, depending on which functions need
 - all functions are compatible with at least ie11+, and other modern browsers (excluding opera mini) 
 
 
@@ -297,31 +297,31 @@ Example
 	<title>Testing getBoundingClientRect with a button containing an icon</title>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<script src="zquery/zquery.js"></script>
-	
+
 </head>
 
 <body>
 
 <template id="simple">
-	<img src="http://placehold.it/50x50" />
-	<span>Hello World!</span>
+	<li>Item X</li>
 </template>
 
 <button id="btn">Click me</button>
 
 
-
+<ul id="container">
+	<li>Item A</li>
+	<li>Item B</li>
+</ul>
 
 <script>
 	
-	document.getElementById('btn').addEventListener('click', function(e){
-	    e.preventDefault();		
-	    var content = z.template(document.getElementById('simple'));
-		content.querySelector('span').textContent = "Bye World!";
-		document.body.appendChild(content);
-		console.log(content);
+	var liTemplate = z.template(document.getElementById('simple'));
+	var ul = document.getElementById('container');
+	document.getElementById('btn').addEventListener('click', function (e) {
+		e.preventDefault();
+		ul.appendChild(liTemplate.cloneNode(true));
 	});
-	
 </script>
 </body>
 </html>
@@ -450,7 +450,7 @@ document.querySelector(".container").addEventListener("click", function (e) {
 ``` 
 
 
-Utility
+Utilities
 ------------
 
 
@@ -528,6 +528,28 @@ console.log(z.isPlainObject(r)); // false
 
 
 
+### z.random ( min, max )
+
+```
+int z.random ( number:min, number:max )
+```
+
+Return a random int between min and max (both included).
+ 
+ 
+Example
+```js
+console.log(z.random(0, 0.3)); //0, 0, 0, ...
+console.log(z.random(0, 50)); // 47, 9, 27, ...
+console.log(z.random(6, 7)); // 6, 6, 7, ...
+console.log(z.random(6, 50)); // 34, 34, 41, ...
+console.log(z.random(6000, 80000)); // 67326, 60425, 78432, ...
+console.log(z.random(800, 20)); // 357, 512, 316, ...
+console.log(z.random(-500, 300)); // -398, -403, 141, ...
+``` 
+
+
+
 
 
 
@@ -581,6 +603,10 @@ The goal of zquery is to factorize the most common methods used by a developer i
 
 History Log
 ------------------
+    
+- 1.11.0 -- 2016-10-09
+
+    - add random method
     
 - 1.10.0 -- 2016-10-09
 

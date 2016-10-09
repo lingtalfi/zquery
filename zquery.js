@@ -259,6 +259,13 @@ if (!window.z) {
         return ('[object Object]' === Object.prototype.toString.call(mixed));
     };
 
+
+    window.z.random = function (min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    };
+
     //------------------------------------------------------------------------------/
     // PLUGINS CORE
     //------------------------------------------------------------------------------/
