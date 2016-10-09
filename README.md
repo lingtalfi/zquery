@@ -14,6 +14,8 @@ Features
 
 
 
+
+
 How to use the library
 ---------------
 
@@ -265,6 +267,73 @@ document.body.addEventListener('keydown', function (e) {
 ``` 
 
 
+
+
+
+Manipulation
+----------
+
+### z.template ( el )
+
+```
+DocumentFragment z.template ( domElement:el )
+```
+
+This is a simple and not complete polyfill for the template tag (ie11).
+It only emulates the most basic functionality demonstrated in the example below.
+
+This means: do not use script tags and styles inside your template tag, 
+and be aware that any http request (an image for instance) will be made in ie11 (but not
+in other browsers fortunately).
+
+ 
+Example
+```js
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Testing getBoundingClientRect with a button containing an icon</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<script src="zquery/zquery.js"></script>
+	
+</head>
+
+<body>
+
+<template id="simple">
+	<img src="http://placehold.it/50x50" />
+	<span>Hello World!</span>
+</template>
+
+<button id="btn">Click me</button>
+
+
+
+
+<script>
+	
+	document.getElementById('btn').addEventListener('click', function(e){
+	    e.preventDefault();		
+	    var content = z.template(document.getElementById('simple'));
+		content.querySelector('span').textContent = "Bye World!";
+		document.body.appendChild(content);
+		console.log(content);
+	});
+	
+</script>
+</body>
+</html>
+``` 
+
+
+
+
+
+
+
+
 Styles
 ----------
 
@@ -512,6 +581,10 @@ The goal of zquery is to factorize the most common methods used by a developer i
 
 History Log
 ------------------
+    
+- 1.10.0 -- 2016-10-09
+
+    - add template method
     
 - 1.9.0 -- 2016-10-08
 
