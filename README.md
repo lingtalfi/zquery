@@ -16,6 +16,7 @@ Features
 
 
 
+
 How to use the library
 ---------------
 
@@ -87,6 +88,32 @@ Then, as you need some functions, you paste them into your zquery.js file.
 Note: you must include the core before you can include the other zquery functions or plugins.
 
 Note2: by default, the zquery.js file contains all the functions (lazy version).
+
+
+
+
+List of available methods and polyfills
+-----------------------------
+
+- [KeyboardEvent.key polyfill](https://github.com/lingtalfi/zquery#keyboardeventkey-polyfill)
+- [z ( selector, ?context )](https://github.com/lingtalfi/zquery#z--selector-context-)
+- [z.clone ( obj )](https://github.com/lingtalfi/zquery#zclone--obj-)
+- [z.closest ( selector ) - polyfill](https://github.com/lingtalfi/zquery#domelementclosest--selector-)
+- [z.debounce ( func, wait )](https://github.com/lingtalfi/zquery#zdebounce--func-wait-)
+- [z.dispatchify ( obj, Class )](https://github.com/lingtalfi/zquery#zdispatchify--obj-object-)
+- [z.getData ( el, key, ?defaultVal )](https://github.com/lingtalfi/zquery#zgetdata--el-key-defaultval-)
+- [z.id ( el )](https://github.com/lingtalfi/zquery#zid--el-)
+- [z.isFunction ( mixed )](https://github.com/lingtalfi/zquery#zisfunction--mixed-)
+- [z.isPlainObject ( mixed )](https://github.com/lingtalfi/zquery#zisplainobject--mixed-)
+- [z.offset ( el )](https://github.com/lingtalfi/zquery#zoffset--el-)
+- [z.position ( el )](https://github.com/lingtalfi/zquery#zposition--el-)
+- [z.random ( min, max )](https://github.com/lingtalfi/zquery#zrandom--min-max-)
+- [z.setData ( el, key, value )](https://github.com/lingtalfi/zquery#zsetdata--el-key-value-)
+- [z.template ( el ) - polyfill](https://github.com/lingtalfi/zquery#ztemplate--el-)
+- [z.viewportHeight ( )](https://github.com/lingtalfi/zquery#zviewportheight--)
+- [z.viewportWidth ( )](https://github.com/lingtalfi/zquery#zviewportwidth--)
+- [zz ( selector, ?context )](https://github.com/lingtalfi/zquery#how-to-use-the-plugins)
+
 
 
 
@@ -482,6 +509,50 @@ console.log(myOptions.car.color); // blue
 
 
 
+### z.getData ( el, key, ?defaultVal )
+
+```
+mixed z.getData ( domElement:element, string:key, ?mixed:defaultVal )
+```
+
+A zStore property is attached to the given element if not there already.
+
+Return the data indexed by the given key from the element's zStore,
+or the defaultVal (which defaults to undefined) otherwise.
+ 
+ 
+Note: this method comes along with the z.setData method counterpart. 
+ 
+Example
+```js
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>z.setData/getData demo</title>
+	<script src="zquery/zquery.js"></script>
+</head>
+
+<body>
+<button id="hi">Hi</button>
+<script>
+
+
+	var btn = document.getElementById('hi');
+	z.setData(btn, "number", 49);
+	console.log(z.getData(btn, "number")); // 49
+	z.setData(btn, "string", "hello");
+	console.log(z.getData(btn, "string")); // hello
+	z.setData(btn, "object", {color: "red"});
+	console.log(z.getData(btn, "object")); // {color: 'red'}
+
+
+</script>
+</body>
+</html>
+``` 
+
 
 
 ### z.isFunction ( mixed )
@@ -550,6 +621,49 @@ console.log(z.random(-500, 300)); // -398, -403, 141, ...
 
 
 
+### z.setData ( el, key, value )
+
+```
+void z.setData ( domElement:element, string:key, mixed:value )
+```
+
+A zStore property is attached to the given element if not there already.
+
+Set the (given) key property in the zStore with a value of (given) value.
+ 
+ 
+Note: this method comes along with the z.getData method counterpart.
+ 
+Example
+```js
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>z.setData/getData demo</title>
+	<script src="zquery/zquery.js"></script>
+</head>
+
+<body>
+<button id="hi">Hi</button>
+<script>
+
+
+	var btn = document.getElementById('hi');
+	z.setData(btn, "number", 49);
+	console.log(z.getData(btn, "number")); // 49
+	z.setData(btn, "string", "hello");
+	console.log(z.getData(btn, "string")); // hello
+	z.setData(btn, "object", {color: "red"});
+	console.log(z.getData(btn, "object")); // {color: 'red'}
+
+
+</script>
+</body>
+</html>
+``` 
+
 
 
 
@@ -603,6 +717,10 @@ The goal of zquery is to factorize the most common methods used by a developer i
 
 History Log
 ------------------
+    
+- 1.12.0 -- 2016-10-10
+
+    - add getData and setData methods
     
 - 1.11.0 -- 2016-10-09
 

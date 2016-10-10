@@ -250,6 +250,30 @@ if (!window.z) {
         return temp;
     };
 
+
+    (function () {
+        function zStorify(el) {
+            if ("undefined" === typeof el.zStore) {
+                el.zStore = {};
+            }
+        }
+
+        window.z.getData = function (el, key, defaultVal) {
+            zStorify(el);
+            if ('undefined' !== typeof el.zStore[key]) {
+                return el.zStore[key];
+            }
+            return defaultVal;
+        };
+
+        window.z.setData = function (el, key, value) {
+            zStorify(el);
+            el.zStore[key] = value;
+        };
+    })();
+    
+    
+    
     window.z.isFunction = function (mixed) {
         return ("function" === typeof mixed);
     };
