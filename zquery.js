@@ -177,6 +177,16 @@ if (!window.z) {
     //------------------------------------------------------------------------------/
     // STYLES
     //------------------------------------------------------------------------------/
+    window.z.getBcr = function (el, dynamic) {
+        var bcr = z.getData(el, 'bcr', false);
+        if (false === bcr || true === dynamic) {
+            bcr = el.getBoundingClientRect();
+            z.setData(el, 'bcr', bcr);
+        }
+        return bcr;
+    };
+    
+    
     // basic offset function
     // https://plainjs.com/javascript/styles/get-the-position-of-an-element-relative-to-the-document-24/
     // if more precision is required, check out jquery's way: https://github.com/jquery/jquery/blob/master/src/offset.js line 106

@@ -101,6 +101,7 @@ List of available methods and polyfills
 - [z.closest ( selector ) - polyfill](https://github.com/lingtalfi/zquery#domelementclosest--selector-)
 - [z.debounce ( func, wait )](https://github.com/lingtalfi/zquery#zdebounce--func-wait-)
 - [z.dispatchify ( obj, Class )](https://github.com/lingtalfi/zquery#zdispatchify--obj-object-)
+- [z.getBcr ( el, ?dynamic )](https://github.com/lingtalfi/zquery#zbcr--el-dynamic-)
 - [z.getData ( el, key, ?defaultVal )](https://github.com/lingtalfi/zquery#zgetdata--el-key-defaultval-)
 - [z.id ( el )](https://github.com/lingtalfi/zquery#zid--el-)
 - [z.isFunction ( mixed )](https://github.com/lingtalfi/zquery#zisfunction--mixed-)
@@ -363,6 +364,51 @@ Example
 
 Styles
 ----------
+
+### z.getBcr ( el, ?dynamic )
+
+```
+Object z.getBcr ( domElement:el, ?bool:dynamic )
+```
+
+Return the object return by the native getBoundingClientRect method in a lazy manner.
+
+This means the first call will store the reference to the object in the given element's memory (zStore).
+Subsequent calls will retrieve the object from the store rather than re-computing it. 
+
+If the dynamic flag is set to true, the object will be re-computed anyway.
+ 
+ 
+Note: depends on the z.getData and z.setData methods.
+ 
+ 
+Example
+```js
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>z.getBcr demo</title>
+	<script src="zquery/zquery.js"></script>
+</head>
+
+<body>
+<button id="hi">Hi</button>
+<script>
+	
+	var btn = document.getElementById('hi');
+	
+	console.log(z.getBcr(btn)); // first call, stores the value in zStore
+	console.log(z.getBcr(btn)); // takes the value from the zStore instead of recomputing it
+	console.log(z.getBcr(btn, true)); // dynamic flag: recomputes the bcr anyway
+
+</script>
+</body>
+</html>  
+``` 
+
+
 
 ### z.offset ( el )
 
@@ -717,6 +763,10 @@ The goal of zquery is to factorize the most common methods used by a developer i
 
 History Log
 ------------------
+    
+- 1.13.0 -- 2016-10-10
+
+    - add getBcr method
     
 - 1.12.0 -- 2016-10-10
 
