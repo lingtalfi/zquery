@@ -101,7 +101,7 @@ List of available methods and polyfills
 - [z.closest ( selector ) - polyfill](https://github.com/lingtalfi/zquery#domelementclosest--selector-)
 - [z.debounce ( func, wait )](https://github.com/lingtalfi/zquery#zdebounce--func-wait-)
 - [z.dispatchify ( obj, Class )](https://github.com/lingtalfi/zquery#zdispatchify--obj-object-)
-- [z.getBcr ( el, ?dynamic )](https://github.com/lingtalfi/zquery#zbcr--el-dynamic-)
+- [z.getBcr ( el, ?dynamic )](https://github.com/lingtalfi/zquery#zgetbcr--el-dynamic-)
 - [z.getData ( el, key, ?defaultVal )](https://github.com/lingtalfi/zquery#zgetdata--el-key-defaultval-)
 - [z.id ( el )](https://github.com/lingtalfi/zquery#zid--el-)
 - [z.isFunction ( mixed )](https://github.com/lingtalfi/zquery#zisfunction--mixed-)
