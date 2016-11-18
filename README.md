@@ -16,6 +16,32 @@ Features
 
 
 
+List of available methods and polyfills
+-----------------------------
+
+- [KeyboardEvent.key polyfill](https://github.com/lingtalfi/zquery#keyboardeventkey-polyfill)
+- [z ( selector, ?context )](https://github.com/lingtalfi/zquery#z--selector-context-)
+- [z.ajaxGet ( el )](https://github.com/lingtalfi/zquery#zajaxget--url-success-)
+- [z.clone ( obj )](https://github.com/lingtalfi/zquery#zclone--obj-)
+- [z.closest ( selector ) - polyfill](https://github.com/lingtalfi/zquery#domelementclosest--selector-)
+- [z.debounce ( func, wait )](https://github.com/lingtalfi/zquery#zdebounce--func-wait-)
+- [z.dispatchify ( obj, Class )](https://github.com/lingtalfi/zquery#zdispatchify--obj-object-)
+- [z.getBcr ( el, ?dynamic )](https://github.com/lingtalfi/zquery#zgetbcr--el-dynamic-)
+- [z.getData ( el, key, ?defaultVal )](https://github.com/lingtalfi/zquery#zgetdata--el-key-defaultval-)
+- [z.id ( el )](https://github.com/lingtalfi/zquery#zid--el-)
+- [z.isFunction ( mixed )](https://github.com/lingtalfi/zquery#zisfunction--mixed-)
+- [z.isPlainObject ( mixed )](https://github.com/lingtalfi/zquery#zisplainobject--mixed-)
+- [z.offset ( el )](https://github.com/lingtalfi/zquery#zoffset--el-)
+- [z.position ( el )](https://github.com/lingtalfi/zquery#zposition--el-)
+- [z.random ( min, max )](https://github.com/lingtalfi/zquery#zrandom--min-max-)
+- [z.setData ( el, key, value )](https://github.com/lingtalfi/zquery#zsetdata--el-key-value-)
+- [z.template ( el ) - polyfill](https://github.com/lingtalfi/zquery#ztemplate--el-)
+- [z.viewportHeight ( )](https://github.com/lingtalfi/zquery#zviewportheight--)
+- [z.viewportWidth ( )](https://github.com/lingtalfi/zquery#zviewportwidth--)
+- [zz ( selector, ?context )](https://github.com/lingtalfi/zquery#how-to-use-the-plugins)
+
+
+
 
 How to use the library
 ---------------
@@ -91,30 +117,6 @@ Note2: by default, the zquery.js file contains all the functions (lazy version).
 
 
 
-
-List of available methods and polyfills
------------------------------
-
-- [KeyboardEvent.key polyfill](https://github.com/lingtalfi/zquery#keyboardeventkey-polyfill)
-- [z ( selector, ?context )](https://github.com/lingtalfi/zquery#z--selector-context-)
-- [z.ajaxGet ( el )](https://github.com/lingtalfi/zquery#zajaxget--el-)
-- [z.clone ( obj )](https://github.com/lingtalfi/zquery#zclone--obj-)
-- [z.closest ( selector ) - polyfill](https://github.com/lingtalfi/zquery#domelementclosest--selector-)
-- [z.debounce ( func, wait )](https://github.com/lingtalfi/zquery#zdebounce--func-wait-)
-- [z.dispatchify ( obj, Class )](https://github.com/lingtalfi/zquery#zdispatchify--obj-object-)
-- [z.getBcr ( el, ?dynamic )](https://github.com/lingtalfi/zquery#zgetbcr--el-dynamic-)
-- [z.getData ( el, key, ?defaultVal )](https://github.com/lingtalfi/zquery#zgetdata--el-key-defaultval-)
-- [z.id ( el )](https://github.com/lingtalfi/zquery#zid--el-)
-- [z.isFunction ( mixed )](https://github.com/lingtalfi/zquery#zisfunction--mixed-)
-- [z.isPlainObject ( mixed )](https://github.com/lingtalfi/zquery#zisplainobject--mixed-)
-- [z.offset ( el )](https://github.com/lingtalfi/zquery#zoffset--el-)
-- [z.position ( el )](https://github.com/lingtalfi/zquery#zposition--el-)
-- [z.random ( min, max )](https://github.com/lingtalfi/zquery#zrandom--min-max-)
-- [z.setData ( el, key, value )](https://github.com/lingtalfi/zquery#zsetdata--el-key-value-)
-- [z.template ( el ) - polyfill](https://github.com/lingtalfi/zquery#ztemplate--el-)
-- [z.viewportHeight ( )](https://github.com/lingtalfi/zquery#zviewportheight--)
-- [z.viewportWidth ( )](https://github.com/lingtalfi/zquery#zviewportwidth--)
-- [zz ( selector, ?context )](https://github.com/lingtalfi/zquery#how-to-use-the-plugins)
 
 
 
