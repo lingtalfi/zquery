@@ -97,6 +97,7 @@ List of available methods and polyfills
 
 - [KeyboardEvent.key polyfill](https://github.com/lingtalfi/zquery#keyboardeventkey-polyfill)
 - [z ( selector, ?context )](https://github.com/lingtalfi/zquery#z--selector-context-)
+- [z.ajaxGet ( el )](https://github.com/lingtalfi/zquery#zajaxget--el-)
 - [z.clone ( obj )](https://github.com/lingtalfi/zquery#zclone--obj-)
 - [z.closest ( selector ) - polyfill](https://github.com/lingtalfi/zquery#domelementclosest--selector-)
 - [z.debounce ( func, wait )](https://github.com/lingtalfi/zquery#zdebounce--func-wait-)
@@ -149,16 +150,17 @@ z('.item', container).forEach(function (el) {
 ``` 
 
 
-Attributes
+
+Ajax
 ----------
 
-### z.id ( el )
+### z.ajaxGet ( url, success )
 
 ```
-string z.id ( domElement:el )
+void z.ajaxGet ( string:url, callback:success )
 ```
-Returns the css id of the given element.
-One (unique identifier) is created if necessary.
+
+Make a GET request to the given url and execute the success callback upon successful query.
 
  
 Example
@@ -192,6 +194,30 @@ Example
 
 </body>
 </html>
+``` 
+
+
+
+
+Attributes
+----------
+
+### z.id ( el )
+
+```
+string z.id ( domElement:el )
+```
+Returns the css id of the given element.
+One (unique identifier) is created if necessary.
+
+ 
+Example
+```js
+z.ajaxGet("/services/vote.php?id=680", function (data) {
+    if ('true' === data) {
+        // todo: increment the span#vote number
+    }
+});
 ``` 
 
 
@@ -764,6 +790,10 @@ The goal of zquery is to factorize the most common methods used by a developer i
 History Log
 ------------------
     
+- 1.14.0 -- 2016-11-18
+
+    - add ajaxGet method
+
 - 1.13.0 -- 2016-10-10
 
     - add getBcr method
