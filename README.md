@@ -25,8 +25,10 @@ List of available methods and polyfills
 - [z.clone ( obj )](https://github.com/lingtalfi/zquery#zclone--obj-)
 - [z.closest ( selector ) - polyfill](https://github.com/lingtalfi/zquery#domelementclosest--selector-)
 - [z.debounce ( func, wait )](https://github.com/lingtalfi/zquery#zdebounce--func-wait-)
+- [z.deleteCookie ( name )](https://github.com/lingtalfi/zquery#zdeletecookie--name-)
 - [z.dispatchify ( obj, Class )](https://github.com/lingtalfi/zquery#zdispatchify--obj-object-)
 - [z.getBcr ( el, ?dynamic )](https://github.com/lingtalfi/zquery#zgetbcr--el-dynamic-)
+- [z.getCookie ( name )](https://github.com/lingtalfi/zquery#zgetcookie--name-)
 - [z.getData ( el, key, ?defaultVal )](https://github.com/lingtalfi/zquery#zgetdata--el-key-defaultval-)
 - [z.id ( el )](https://github.com/lingtalfi/zquery#zid--el-)
 - [z.isFunction ( mixed )](https://github.com/lingtalfi/zquery#zisfunction--mixed-)
@@ -34,6 +36,7 @@ List of available methods and polyfills
 - [z.offset ( el )](https://github.com/lingtalfi/zquery#zoffset--el-)
 - [z.position ( el )](https://github.com/lingtalfi/zquery#zposition--el-)
 - [z.random ( min, max )](https://github.com/lingtalfi/zquery#zrandom--min-max-)
+- [z.setCookie ( name, value, days )](https://github.com/lingtalfi/zquery#zsetcookie--name-value-days-)
 - [z.setData ( el, key, value )](https://github.com/lingtalfi/zquery#zsetdata--el-key-value-)
 - [z.template ( el ) - polyfill](https://github.com/lingtalfi/zquery#ztemplate--el-)
 - [z.viewportHeight ( )](https://github.com/lingtalfi/zquery#zviewportheight--)
@@ -583,6 +586,42 @@ console.log(myOptions.car.color); // blue
 
 
 
+### z.deleteCookie ( name )
+
+```
+void z.deleteCookie ( str:name )
+```
+
+Deletes the cookie which name is given.
+
+Name with special chars should be encoded with the encodeURIComponent function.
+
+// https://plainjs.com/javascript/utilities/set-cookie-get-cookie-and-delete-cookie-5/
+
+ 
+ 
+Example
+```js
+z.deleteCookie("my-cookie");
+``` 
+
+
+
+### z.getCookie ( name )
+
+```
+null|str z.getCookie ( str:name )
+```
+
+Returns the value of a given cookie, or null if it was not set.
+ 
+ 
+Example
+```js
+var value = z.getCookie("my-cookie");
+``` 
+
+
 ### z.getData ( el, key, ?defaultVal )
 
 ```
@@ -693,6 +732,20 @@ console.log(z.random(800, 20)); // 357, 512, 316, ...
 console.log(z.random(-500, 300)); // -398, -403, 141, ...
 ``` 
 
+### z.setCookie ( name, value, days )
+
+```
+void z.setCookie ( str:name, str:value, number:days )
+```
+
+Create a cookie which expires after the given number of days.
+ 
+ 
+Example
+```js
+z.setCookie("my-cookie", "hello", 7);
+``` 
+
 
 
 ### z.setData ( el, key, value )
@@ -792,6 +845,10 @@ The goal of zquery is to factorize the most common methods used by a developer i
 History Log
 ------------------
     
+- 1.15.0 -- 2016-12-21
+
+    - add setCookie, getCookie and deleteCookie methods
+
 - 1.14.0 -- 2016-11-18
 
     - add ajaxGet method
