@@ -21,7 +21,8 @@ List of available methods and polyfills
 
 - [KeyboardEvent.key polyfill](https://github.com/lingtalfi/zquery#keyboardeventkey-polyfill)
 - [z ( selector, ?context )](https://github.com/lingtalfi/zquery#z--selector-context-)
-- [z.ajaxGet ( el )](https://github.com/lingtalfi/zquery#zajaxget--url-success-)
+- [z.ajaxGet ( url, success )](https://github.com/lingtalfi/zquery#zajaxget--url-success-)
+- [z.ajaxPost ( url, data, success )](https://github.com/lingtalfi/zquery#zajaxgpost--url-data-success-)
 - [z.clone ( obj )](https://github.com/lingtalfi/zquery#zclone--obj-)
 - [z.closest ( selector ) - polyfill](https://github.com/lingtalfi/zquery#domelementclosest--selector-)
 - [z.debounce ( func, wait )](https://github.com/lingtalfi/zquery#zdebounce--func-wait-)
@@ -201,6 +202,24 @@ Example
 </html>
 ``` 
 
+
+### z.ajaxPost ( url, data, success )
+
+```
+void z.ajaxPost ( string:url, mixed:data, callback:success )
+```
+
+Make a POST request to the given url and execute the success callback upon successful query.
+
+ 
+Example
+```js
+// example request
+window.z.ajaxPost('http://foo.bar/', 'p1=1&p2=Hello+World', function(data){ console.log(data); });
+	
+// example request with data object
+window.z.ajaxPost('http://foo.bar/', { p1: 1, p2: 'Hello World' }, function(data){ console.log(data); });
+```	
 
 
 
@@ -845,6 +864,10 @@ The goal of zquery is to factorize the most common methods used by a developer i
 History Log
 ------------------
     
+- 1.16.0 -- 2016-12-22
+
+    - add ajaxPost
+
 - 1.15.0 -- 2016-12-21
 
     - add setCookie, getCookie and deleteCookie methods
